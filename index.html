@@ -11,7 +11,7 @@
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
 
 
-  <title>GAMap</title>
+  <title>MapBert</title>
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
 
@@ -38,67 +38,8 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">GAMap: Zero-Shot Object Goal Navigation with Multi-Scale Geometric-Affordance Guidance</h1>
-            <div class="is-size-5 publication-authors">
-              <!-- Paper authors -->
-              <span class="author-block">
-                <a>Shuaihang Yuan</a>,</span>
-                <span class="author-block">
-                  <a>Hao Huang</a>,</span>
-                  <span class="author-block">
-                    <a>Yu Hao</a>,</span>
-                    <span class="author-block">
-                      <a>Congcong Wen</a>,</span>
-                      <span class="author-block">
-                        <a>Anthony Tzes</a>,</span>
-                        <span class="author-block">
-                          <a>Yi Fang</a>
-                  </span>
-                  </div>
-
-                  <div class="is-size-5 publication-authors">
-                    <span class="author-block">NYUAD Center for Artificial Intelligence and Robotics (CAIR)<br>
-                      New York University Abu Dhabi, Electrical Engineering<br>
-                      New York University, Electrical & Computer Engineering Dept<br>
-                      Embodied AI and Robotics (AIR) Lab<br>NeurIPS 2024</span>
-                  </div>
-
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- Arxiv PDF link -->
-                      <span class="link-block">
-                        <a href="https://nips.cc/virtual/2024/poster/95755" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
-
-
-                  <!-- Github link -->
-                  <span class="link-block">
-                    <a href="https://github.com/shalexyuan/GAMap/tree/main" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-
-                <!-- ArXiv abstract Link -->
-                <span class="link-block">
-                  <a href="https://arxiv.org/pdf/2410.23978" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-            </div>
+            <h1 class="title is-1 publication-title">MapBert: A Bitwise Masked Modeling for Real-Time Semantic Map Generation</h1>
+            
           </div>
         </div>
       </div>
@@ -112,9 +53,9 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <!-- Replacing video with a pipeline figure image -->
-      <img src="static/images/nips24_pipeline.png" alt="Pipeline Figure" width="100%">
+      <img src="static/images/pipe.png" alt="Pipeline Figure" width="100%">
       <h2 class="subtitle has-text-centered">
-        Pipeline of the GAMap generation.
+        Pipeline of the MapBert.
       </h2>
     </div>
   </div>
@@ -129,20 +70,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Zero-Shot Object Goal Navigation (ZS-OGN) enables robots to navigate toward
-            objects of unseen categories without prior training. Traditional approaches often
-            leverage categorical semantic information for navigation guidance, which struggles
-            when only partial objects are observed or detailed and functional representations
-            of the environment are lacking. To resolve the above two issues, we propose
-            Geometric-part and Affordance Maps (GAMap), a novel method that integrates
-            object parts and affordance attributes for navigation guidance. Our method includes
-            a multi-scale scoring approach to capture geometric-part and affordance attributes
-            of objects at different scales. Comprehensive experiments conducted on the HM3D
-            and Gibson benchmark datasets demonstrate improvements in Success Rates and
-            Success weighted by Path Length, underscoring the efficacy of our geometric-part
-            and affordance-guided navigation approach in enhancing robot autonomy and
-            versatility, without any additional task-specific training or fine-tuning with the
-            semantics of unseen objects and/or the locomotions of the robot.
+            Spatial awareness is a critical capability for embodied agents, as it enables them to anticipate and reason about unobserved regions. The primary challenge arises from learning the distribution of indoor semantics, complicated by sparse, imbalanced object categories and diverse spatial scales. Existing methods struggle to robustly generate unobserved areas in real time and do not generalize well to new environments. To this end, we propose \textbf{MapBERT}, a novel framework designed to effectively model the distribution of unseen spaces. Motivated by the observation that the one-hot encoding of semantic maps aligns naturally with the binary structure of bit encoding, we, for the first time, leverage a lookup-free BitVAE to encode semantic maps into compact bitwise tokens. Building on this, a masked transformer is employed to infer missing regions and generate complete semantic maps from limited observations. To enhance object-centric reasoning, we propose an object-aware masking strategy that masks entire object categories concurrently and pairs them with learnable embeddings, capturing implicit relationships between object embeddings and spatial tokens. By learning these relationships, the model more effectively captures indoor semantic distributions crucial for practical robotic tasks. Experiments on Gibson benchmarks show that MapBERT achieves state-of-the-art semantic map generation, balancing computational efficiency with accurate reconstruction of unobserved regions.
           </p>
         </div>
       </div>
@@ -156,38 +84,53 @@
   <div class="hero-body">
     <div class="container">
       <!-- Results Figure Presentation. -->
-      <h2 class="title is-3">Results</h2>
+      <h2 class="title is-3">Map Generation Quality</h2>
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <div class="figure-display">
             <!-- Single Large Figure -->
-            <img src="static/images/nips_result1.png" alt="Result Figure 1" style="width:100%;">
+            <img src="static/images/compar.png" alt="Result Figure 1" style="width:100%;">
           </div>
         </div>
       </div>
     </div>
   </div>
-    <!-- YouTube Video Presentation -->
-
 </section>
 
 <section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Real-World Video</h2>
+      <!-- Results Figure Presentation. -->
+      <h2 class="title is-3">Map Generation Quantitative Results</h2>
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- Youtube embed code here -->
-            <iframe src="https://www.youtube.com/embed/QYLM2XtZCK8?si=XVZckXBvLuLqq9bR" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <div class="figure-display">
+            <!-- Single Large Figure -->
+            <img src="static/images/result.png" alt="Result Figure 1" style="width:100%;">
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <!-- Results Figure Presentation. -->
+      <h2 class="title is-3">Navigation Results</h2>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="figure-display">
+            <!-- Single Large Figure -->
+            <img src="static/images/nav.png" alt="Result Figure 1" style="width:100%;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!--BibTex citation -->
   <section class="section" id="BibTeX">
